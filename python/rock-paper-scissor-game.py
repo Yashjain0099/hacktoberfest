@@ -1,35 +1,29 @@
 import random
-print("hello, welcome to rock paper scissors!")
-print("just so you know, I will win!")
-print("enter rock, paper, or scissor")
-user=input()
-win="tie"
-while win == "tie":
-  print("choose rock, paper, or scissor")
-  user=input()
-  computer=random.randint(1, 3)
-  if computer=="1":
-    computer_attack="rock"
-  elif computer == "2":
-    computer_attack="paper"
-  else:
-    computer_attack="scissor"
-  if user == "rock" and computer_attack == "scissor":
-    print("you win, I chose " + computer_attack)
-    quit()
-  if user == "paper" and computer_attack == "rock":
-    print("you win, I chose " + computer_attack)
-    quit()
-  if user == "scissor" and computer_attack == "paper":
-    print("you win, I chose " + computer_attack)
-    quit()
-  if computer_attack=="rock" and user=="scissor":
-    print("I win. I chose " + computer_attack)
-  if computer_attack=="paper" and user=="rock":
-    print("I win. I chose " + computer_attack)
-    if computer_attack=="scissor" and user=="paper":
-      print("I win. I chose " + computer_attack)
+
+print("Hello, welcome to Rock, Paper, Scissors!")
+print("Just so you know, I will win!")
+print("Enter rock, paper, or scissors")
+
+# Game loop
+while True:
+    user = input("Choose rock, paper, or scissors: ").lower()
+    
+    # Validate user input
+    if user not in ["rock", "paper", "scissors"]:
+        print("Invalid choice. Please choose rock, paper, or scissors.")
+        continue
+
+    # Computer choice
+    computer_choice = random.choice(["rock", "paper", "scissors"])
+    print(f"I chose {computer_choice}.")
+
+    # Determine the winner
+    if user == computer_choice:
+        print("It's a tie! Try again.")
+    elif (user == "rock" and computer_choice == "scissors") or \
+         (user == "paper" and computer_choice == "rock") or \
+         (user == "scissors" and computer_choice == "paper"):
+        print("You win!")
+        break
     else:
-        print("I win. I chose " + computer_attack)
-        print("try again")
-        quit()
+        print("I win! Try again.")
